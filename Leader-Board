@@ -59,4 +59,15 @@ local function main()
     end
 end
 
-main()
+-- Startup script and termination protection
+local function startup()
+    while true do
+        local ok, err = pcall(main)
+        if not ok then
+            print("Error: " .. err)
+        end
+        sleep(1)
+    end
+end
+
+startup()
